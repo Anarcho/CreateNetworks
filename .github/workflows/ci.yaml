@@ -23,8 +23,8 @@ jobs:
       - name: Build with Gradle
         uses: gradle/gradle-build-action@v2
         with:
-          arguments: build --no-daemon
+          arguments: build --no-daemon --stacktrace --info
       - name: Test with Gradle
         uses: gradle/gradle-build-action@v2
         with:
-          arguments: test --no-daemon
+          arguments: test --no-daemon --stacktrace --info

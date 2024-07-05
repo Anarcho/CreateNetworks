@@ -85,6 +85,8 @@ repositories {
         name = "SpongePowered"
         url = 'https://repo.spongepowered.org/maven'
     }
+    // Additional fallback repositories
+    mavenCentral() // Maven Central Repository
 }
 
 dependencies {
