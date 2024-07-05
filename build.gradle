@@ -87,11 +87,19 @@ repositories {
         name = "SpongePowered"
         url = 'https://repo.spongepowered.org/maven'
     }
+    mavenLocal()
 }
 
 dependencies {
     // Minecraft Forge
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
+
+    jarJar("com.tterrag.registrate:Registrate:${registrate_version}") {
+        jarJar.ranged(it, '[MC1.19.3-1.1.10,)')
+    }
+    jarJar("com.jozufozu.flywheel:flywheel-forge-${flywheel_minecraft_version}:${flywheel_version}") {
+        jarJar.ranged(it, '[1.0,2.0)')
+    }
 
     // Create mod
     implementation fg.deobf("com.simibubi.create:create-${create_minecraft_version}:${create_version}:slim") { transitive = false }
@@ -101,9 +109,6 @@ dependencies {
 
     // Registrate
     implementation fg.deobf("com.tterrag.registrate:Registrate:${registrate_version}")
-
-    // JarJar Registrate
-    jarJar(group: 'com.tterrag.registrate', name: 'Registrate', version: registrate_jarjar_range)
 
     // Mixin annotation processor
     annotationProcessor "org.spongepowered:mixin:${mixin_version}:processor"
