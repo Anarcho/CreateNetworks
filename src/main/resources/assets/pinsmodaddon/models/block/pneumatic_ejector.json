@@ -1,0 +1,12 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "particle": "pinsmodaddon:block/pneumatic_ejector_front",
+    "down": "pinsmodaddon:block/pneumatic_ejector_side",
+    "up": "pinsmodaddon:block/pneumatic_ejector_side",
+    "north": "pinsmodaddon:block/pneumatic_ejector_front",
+    "east": "pinsmodaddon:block/pneumatic_ejector_side",
+    "south": "pinsmodaddon:block/pneumatic_ejector_back",
+    "west": "pinsmodaddon:block/pneumatic_ejector_side"
+  }
+}

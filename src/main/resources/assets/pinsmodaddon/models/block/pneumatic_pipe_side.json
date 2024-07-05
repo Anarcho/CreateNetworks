@@ -1,0 +1,20 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "particle": "pinsmodaddon:block/pneumatic_pipe",
+    "side": "pinsmodaddon:block/pneumatic_pipe"
+  },
+  "elements": [
+    {   "from": [ 4, 4, 0 ],
+      "to": [ 12, 12, 4 ],
+      "faces": {
+        "down":  { "uv": [ 4, 0, 12, 4 ], "texture": "#side" },
+        "up":    { "uv": [ 4, 0, 12, 4 ], "texture": "#side" },
+        "north": { "uv": [ 4, 4, 12, 12 ], "texture": "#side", "cullface": "north" },
+        "south": { "uv": [ 4, 4, 12, 12 ], "texture": "#side" },
+        "west":  { "uv": [ 0, 4, 4, 12 ], "texture": "#side" },
+        "east":  { "uv": [ 0, 4, 4, 12 ], "texture": "#side" }
+      }
+    }
+  ]
+}
