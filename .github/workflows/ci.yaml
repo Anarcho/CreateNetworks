@@ -24,7 +24,11 @@ jobs:
         uses: gradle/gradle-build-action@v2
         with:
           arguments: build --no-daemon --stacktrace --info
+        env:
+          GRADLE_OPTS: "-Dorg.gradle.daemon=false -Dorg.gradle.parallel=true -Dorg.gradle.jvmargs=-Xmx4g -Dorg.gradle.workers.max=2"
       - name: Test with Gradle
         uses: gradle/gradle-build-action@v2
         with:
           arguments: test --no-daemon --stacktrace --info
+        env:
+          GRADLE_OPTS: "-Dorg.gradle.daemon=false -Dorg.gradle.parallel=true -Dorg.gradle.jvmargs=-Xmx4g -Dorg.gradle.workers.max=2"
