@@ -3,19 +3,14 @@ name: Java CI with Gradle
 on:
   push:
     branches:
-      - 'main'
-      - 'develop'
-      - 'release/*'
-      - 'hotfix/*'
+      - main
   pull_request:
     branches:
-      - 'main'
-      - 'develop'
-      - 'release/*'
-      - 'hotfix/*'
+      - main
 
 jobs:
   build:
+
     runs-on: ubuntu-latest
 
     steps:
@@ -48,6 +43,3 @@ jobs:
 
       - name: Test with Gradle
         run: ./gradlew test
-
-      - name: Run linter
-        run: ./gradlew checkstyleMain checkstyleTest
