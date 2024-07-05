@@ -88,19 +88,29 @@ repositories {
 }
 
 dependencies {
+    // Minecraft Forge
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
 
+    // Create mod
     implementation fg.deobf("com.simibubi.create:create-${create_minecraft_version}:${create_version}:slim") { transitive = false }
+
+    // Flywheel (Create dependency)
     implementation fg.deobf("com.jozufozu.flywheel:flywheel-forge-${flywheel_minecraft_version}:${flywheel_version}")
-    implementation fg.deobf("com.tterrag.registrate:Registrate:MC1.19.3-1.1.6")
 
-    jarJar(group: 'com.tterrag.registrate', name: 'Registrate', version: "[MC1.19.3,MC1.20)")
+    // Registrate
+    implementation fg.deobf("com.tterrag.registrate:Registrate:${registrate_version}")
 
-    annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
+    // JarJar Registrate
+    jarJar(group: 'com.tterrag.registrate', name: 'Registrate', version: registrate_jarjar_range)
 
+    // Mixin annotation processor
+    annotationProcessor "org.spongepowered:mixin:${mixin_version}:processor"
+
+    // JEI mod integration
     compileOnly fg.deobf("mezz.jei:jei-${jei_minecraft_version}:${jei_version}:api")
     runtimeOnly fg.deobf("mezz.jei:jei-${jei_minecraft_version}:${jei_version}")
 
+    // Conditional Mixin annotation processor for IDE
     if (!Boolean.getBoolean('idea.sync.active')) {
         annotationProcessor "org.spongepowered:mixin:${mixin_version}:processor"
     }
