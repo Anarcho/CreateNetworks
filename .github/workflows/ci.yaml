@@ -39,7 +39,10 @@ jobs:
         run: ./gradlew wrapper --gradle-version 8.8 --distribution-type all
 
       - name: Build with Gradle
-        run: ./gradlew clean build
+        run: ./gradlew clean build --no-daemon
 
       - name: Test with Gradle
-        run: ./gradlew test
+        run: ./gradlew test --no-daemon
+
+      - name: Run linter
+        run: ./gradlew checkstyleMain checkstyleTest --no-daemon
