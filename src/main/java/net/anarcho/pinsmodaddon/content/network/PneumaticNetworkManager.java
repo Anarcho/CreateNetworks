@@ -1,8 +1,10 @@
 package net.anarcho.pinsmodaddon.content.network;
 
 import net.anarcho.pinsmodaddon.PneumaticItemNetworks;
+import net.anarcho.pinsmodaddon.content.items.PunchcardData;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.items.IItemHandler;
 
@@ -204,6 +206,22 @@ public class PneumaticNetworkManager {
             for (PneumaticNetwork network : activeNetworks) {
                 network.tick();
             }
+        }
+    }
+
+    public void applyPunchcardInstructions(BlockPos pos, PunchcardData punchcardData) {
+        PneumaticNetwork network = networks.get(pos);
+        if (network != null) {
+            network.setPunchcardInstructions(pos, punchcardData);
+            PneumaticItemNetworks.LOGGER.debug("Applied punchcard instructions to network at {}", pos);
+        }
+    }
+
+    public void removePunchcardInstructions(BlockPos pos) {
+        PneumaticNetwork network = networks.get(pos);
+        if (network != null) {
+            network.removePunchcardInstructions(pos);
+            PneumaticItemNetworks.LOGGER.debug("Removed punchcard instructions from network at {}", pos);
         }
     }
 

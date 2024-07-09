@@ -1,7 +1,9 @@
 package net.anarcho.pinsmodaddon.content.network;
 
 import net.anarcho.pinsmodaddon.PneumaticItemNetworks;
+import net.anarcho.pinsmodaddon.content.items.PunchcardData;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.items.IItemHandler;
@@ -12,11 +14,11 @@ public class PneumaticNetwork {
     private final Set<BlockPos> pipes = new HashSet<>();
     private final Map<BlockPos, IItemHandler> injectors = new HashMap<>();
     private final Map<BlockPos, IItemHandler> ejectors = new HashMap<>();
+    private final Map<BlockPos, PunchcardData> punchcardInstructions = new HashMap<>();
 
     private boolean lastLoggedActiveState = false;
     private static final int LOG_COOLDOWN = 100; // ticks
     private int ticksSinceLastLog = 0;
-
 
     private static final int MAX_TRANSFER_PER_TICK = 64;
 
@@ -59,6 +61,7 @@ public class PneumaticNetwork {
         pipes.addAll(other.pipes);
         injectors.putAll(other.injectors);
         ejectors.putAll(other.ejectors);
+        punchcardInstructions.putAll(other.punchcardInstructions);
         PneumaticItemNetworks.LOGGER.debug("Merged networks. New size: {} pipes, {} injectors, {} ejectors",
                 pipes.size(), injectors.size(), ejectors.size());
     }
@@ -111,23 +114,39 @@ public class PneumaticNetwork {
             if (!extracted.isEmpty()) {
                 PneumaticItemNetworks.LOGGER.debug("Attempting to extract {} items from injector at {}", extracted.getCount(), injectorPos);
 
-                for (Map.Entry<BlockPos, IItemHandler> ejectorEntry : ejectors.entrySet()) {
-                    IItemHandler ejector = ejectorEntry.getValue();
-                    BlockPos ejectorPos = ejectorEntry.getKey();
-
+                BlockPos targetPos = findTargetEjector(injectorPos, extracted);
+                if (targetPos != null) {
+                    IItemHandler ejector = ejectors.get(targetPos);
                     int inserted = insertIntoEjector(ejector, extracted);
                     if (inserted > 0) {
                         ItemStack actualExtracted = injector.extractItem(slot, inserted, false);
-                        PneumaticItemNetworks.LOGGER.debug("Transferred {} items from injector at {} to ejector at {}", inserted, injectorPos, ejectorPos);
-
-                        if (inserted == extracted.getCount()) {
-                            break;
-                        }
-                        extracted = ItemStack.EMPTY;
+                        PneumaticItemNetworks.LOGGER.debug("Transferred {} items from injector at {} to ejector at {}", inserted, injectorPos, targetPos);
                     }
                 }
             }
         }
+    }
+
+    private BlockPos findTargetEjector(BlockPos injectorPos, ItemStack stack) {
+        PunchcardData punchcard = punchcardInstructions.get(injectorPos);
+        if (punchcard != null) {
+            // Use punchcard instructions to determine the target ejector
+            // This is a simplified example; you'll need to implement your own logic based on your punchcard format
+            for (int i = 0; i < 5; i++) {
+                for (int j = 0; j < 5; j++) {
+                    String instruction = punchcard.getInstruction(i, j);
+                    if (instruction.startsWith("ROUTE:")) {
+                        String[] parts = instruction.split(":");
+                        if (parts.length == 3 && stack.getItem().toString().equals(parts[1])) {
+                            return new BlockPos(Integer.parseInt(parts[2]), 0, 0); // Simplified; replace with actual coordinate parsing
+                        }
+                    }
+                }
+            }
+        }
+
+        // If no punchcard or no matching instruction, use default routing logic
+        return ejectors.keySet().stream().findFirst().orElse(null);
     }
 
     private int insertIntoEjector(IItemHandler ejector, ItemStack stack) {
@@ -145,6 +164,16 @@ public class PneumaticNetwork {
         }
 
         return totalInserted;
+    }
+
+    public void setPunchcardInstructions(BlockPos pos, PunchcardData punchcardData) {
+        punchcardInstructions.put(pos, punchcardData);
+        PneumaticItemNetworks.LOGGER.debug("Set punchcard instructions at {}", pos);
+    }
+
+    public void removePunchcardInstructions(BlockPos pos) {
+        punchcardInstructions.remove(pos);
+        PneumaticItemNetworks.LOGGER.debug("Removed punchcard instructions at {}", pos);
     }
 
     public int getPipeCount() {

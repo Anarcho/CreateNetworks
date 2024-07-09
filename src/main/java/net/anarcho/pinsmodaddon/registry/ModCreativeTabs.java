@@ -20,6 +20,8 @@ public class ModCreativeTabs {
                         output.accept(ModBlocks.PNEUMATIC_PIPE.get());
                         output.accept(ModBlocks.PNEUMATIC_INJECTOR.get());
                         output.accept(ModBlocks.PNEUMATIC_EJECTOR.get());
+                        output.accept(ModBlocks.PUNCHCARD_PROGRAMMER.get());
+                        output.accept(ModItems.PUNCHCARD.get());
                         // Add more items here as needed
                     })
                     .build()

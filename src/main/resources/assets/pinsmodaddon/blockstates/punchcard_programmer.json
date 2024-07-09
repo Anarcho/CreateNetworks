@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "pinsmodaddon:block/punchcard_programmer"
+    }
+  }
+}
