@@ -1,9 +1,9 @@
 {
   "required": true,
   "minVersion": "0.8",
-  "package": "net.anarcho.pinsmodaddon.mixin",
+  "package": "net.anarcho.createnetworks.mixin",
   "compatibilityLevel": "JAVA_17",
-  "refmap": "pinsmodaddon.refmap.json",
+  "refmap": "createnetworks.refmap.json",
   "mixins": [
   ],
   "client": [

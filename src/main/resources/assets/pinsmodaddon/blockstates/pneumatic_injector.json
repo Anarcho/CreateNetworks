@@ -1,10 +1,10 @@
 {
     "variants": {
-        "facing=north": { "model": "pinsmodaddon:block/pneumatic_injector" },
-        "facing=east":  { "model": "pinsmodaddon:block/pneumatic_injector", "y": 90 },
-        "facing=south": { "model": "pinsmodaddon:block/pneumatic_injector", "y": 180 },
-        "facing=west":  { "model": "pinsmodaddon:block/pneumatic_injector", "y": 270 },
-        "facing=up":    { "model": "pinsmodaddon:block/pneumatic_injector", "x": 270 },
-        "facing=down":  { "model": "pinsmodaddon:block/pneumatic_injector", "x": 90 }
+        "facing=north": { "model": "createnetworks:block/pneumatic_injector" },
+        "facing=east":  { "model": "createnetworks:block/pneumatic_injector", "y": 90 },
+        "facing=south": { "model": "createnetworks:block/pneumatic_injector", "y": 180 },
+        "facing=west":  { "model": "createnetworks:block/pneumatic_injector", "y": 270 },
+        "facing=up":    { "model": "createnetworks:block/pneumatic_injector", "x": 270 },
+        "facing=down":  { "model": "createnetworks:block/pneumatic_injector", "x": 90 }
     }
 }

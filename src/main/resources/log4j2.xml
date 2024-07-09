@@ -14,11 +14,11 @@
     </Appenders>
     <Loggers>
         <!-- Configure logging for your mod -->
-        <Logger name="net.anarcho.pinsmodaddon" level="debug" additivity="false">
+        <Logger name="net.anarcho.createnetworks" level="debug" additivity="false">
             <AppenderRef ref="SysOut"/>
             <AppenderRef ref="File"/>
         </Logger>
-        <Logger name="net.anarcho.pinsmodaddon" level="debug" additivity="false">
+        <Logger name="net.anarcho.createnetworks" level="debug" additivity="false">
             <AppenderRef ref="Console"/>
             <AppenderRef ref="File"/>
         </Logger>

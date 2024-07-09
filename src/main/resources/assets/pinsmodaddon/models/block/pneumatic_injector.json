@@ -1,12 +1,12 @@
 {
   "parent": "block/cube",
   "textures": {
-    "particle": "pinsmodaddon:block/pneumatic_injector_front",
-    "down": "pinsmodaddon:block/pneumatic_injector_side",
-    "up": "pinsmodaddon:block/pneumatic_injector_side",
-    "north": "pinsmodaddon:block/pneumatic_injector_front",
-    "east": "pinsmodaddon:block/pneumatic_injector_side",
-    "south": "pinsmodaddon:block/pneumatic_injector_back",
-    "west": "pinsmodaddon:block/pneumatic_injector_side"
+    "particle": "createnetworks:block/pneumatic_injector_front",
+    "down": "createnetworks:block/pneumatic_injector_side",
+    "up": "createnetworks:block/pneumatic_injector_side",
+    "north": "createnetworks:block/pneumatic_injector_front",
+    "east": "createnetworks:block/pneumatic_injector_side",
+    "south": "createnetworks:block/pneumatic_injector_back",
+    "west": "createnetworks:block/pneumatic_injector_side"
   }
 }

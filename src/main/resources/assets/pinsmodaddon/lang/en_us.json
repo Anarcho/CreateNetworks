@@ -1,10 +1,10 @@
 {
-    "block.pinsmodaddon.pneumatic_pipe": "Pneumatic Pipe",
-    "block.pinsmodaddon.pneumatic_injector": "Pneumatic Injector",
-    "block.pinsmodaddon.pneumatic_ejector": "Pneumatic Ejector",
-    "block.pinsmodaddon.punchcard_programmer": "Punchcard Programmer",
+    "block.createnetworks.pneumatic_pipe": "Pneumatic Pipe",
+    "block.createnetworks.pneumatic_injector": "Pneumatic Injector",
+    "block.createnetworks.pneumatic_ejector": "Pneumatic Ejector",
+    "block.createnetworks.punchcard_programmer": "Punchcard Programmer",
 
-    "item.pinsmodaddon.punchcard": "Punchcard",
+    "item.createnetworks.punchcard": "Punchcard",
 
     "tooltip.pneumatic_injector.header": "Pneumatic Injector",
     "tooltip.pneumatic_injector.items_transferred": "Items Transferred: %d",
@@ -12,14 +12,14 @@
     "tooltip.pneumatic_ejector.header": "Pneumatic Ejector",
     "tooltip.pneumatic_ejector.items_extracted": "Items Extracted: %d",
 
-    "container.pinsmodaddon.punchcard_programmer": "Punchcard Programmer",
+    "container.createnetworks.punchcard_programmer": "Punchcard Programmer",
 
-    "gui.pinsmodaddon.punchcard_programmer.program": "Program",
-    "gui.pinsmodaddon.punchcard_programmer.clear": "Clear",
-    "gui.pinsmodaddon.punchcard_programmer.save": "Save Pattern",
-    "gui.pinsmodaddon.punchcard_programmer.load": "Load Pattern",
+    "gui.createnetworks.punchcard_programmer.program": "Program",
+    "gui.createnetworks.punchcard_programmer.clear": "Clear",
+    "gui.createnetworks.punchcard_programmer.save": "Save Pattern",
+    "gui.createnetworks.punchcard_programmer.load": "Load Pattern",
 
-    "tooltip.pinsmodaddon.punchcard.programmed": "Programmed Punchcard",
-    "tooltip.pinsmodaddon.punchcard.blank": "Blank Punchcard",
-    "tooltip.pinsmodaddon.punchcard.chained": "Chained to another card"
+    "tooltip.createnetworks.punchcard.programmed": "Programmed Punchcard",
+    "tooltip.createnetworks.punchcard.blank": "Blank Punchcard",
+    "tooltip.createnetworks.punchcard.chained": "Chained to another card"
 }
